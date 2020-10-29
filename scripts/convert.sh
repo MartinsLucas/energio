@@ -1,16 +1,27 @@
-FILE="./bdgd/latest/layers.txt"
+#!/bin/bash
 
-if test -f "$FILE"; then
-    echo "$FILE exists."
-    echo "Deleting $FILE."
-    rm $FILE
-fi
+BDGD_SRC_BASE="./bdgd/latest/"
+BDGD_CONV_BASE="./bdgd/converted/"
 
-echo "Creatng $FILE"
-touch $FILE
+for entry in "$BDGD_SRC_BASE"*.gdb; do
+    bdgd_name="${entry%.gdb}"
+    bdgd_name="${bdgd_name#*latest/}"
+    bdgd_dir="$BDGD_CONV_BASE$bdgd_name"
 
-for entry in ./bdgd/latest/*.gdb; do
+    if [ -d $bdgd_dir ]; then
+        echo "exists"
+    else
+        echo "doesn't exists"
+        echo "creating"
+        mkdir $bdgd_dir
+    fi
+
+    echo $entry
     ogrinfo -q $entry | while read line; do
-        echo "$line" | sed 's/\([0-9]\+: \)//g' | sed 's/\ .*//g'
+        layer=${line#*:\ }
+        layer=${layer%\ (*}
+
+        echo "creating $bdgd_dir/$layer"
+        ogr2ogr "$bdgd_dir/$layer" -f GeoJSON -t_srs EPSG:4674 $entry $layer
     done
 done

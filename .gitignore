@@ -1,0 +1,4 @@
+*.env
+
+bdgd/converted/*
+bdgd/latest/*
