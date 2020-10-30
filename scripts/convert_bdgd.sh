@@ -1,7 +1,7 @@
 #!/bin/bash
 
-BDGD_SRC_BASE="./bdgd/latest/"
-BDGD_CONV_BASE="./bdgd/converted/"
+BDGD_SRC_BASE="./src/bdgd/latest/"
+BDGD_CONV_BASE="./src/bdgd/converted/"
 
 for entry in "$BDGD_SRC_BASE"*.gdb; do
     bdgd_name="${entry%.gdb}"
