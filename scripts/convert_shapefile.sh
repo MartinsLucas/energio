@@ -1,23 +1,26 @@
 #!/bin/bash
 
 SHAPEFILE_SRC_BASE="./src/shapefiles/latest/"
-SHAPEFILE_CONV_BASE="./src/shapefiles/extracted/"
+SHAPEFILE_CONV_BASE="./src/shapefiles/converted/"
 
+echo "Reading shapefiles..."
 for entry in "$SHAPEFILE_SRC_BASE"*; do
     shapfile_name="${entry#*latest/}"
+
+    echo "Found $shapfile_name..."
+
     shapfile_dir="$SHAPEFILE_CONV_BASE$shapfile_name"
 
-    echo $shapfile_dir
-
+    echo "Checking if destination directory already exists."
     if [ -d $shapfile_dir ]; then
-        echo "exists"
+        echo "Directory exists."
     else
-        echo "doesn't exists"
-        echo "creating"
+        echo "Directory doesn't exists."
+        echo "Creating it."
         mkdir $shapfile_dir
     fi
 
-    echo "$entry"
-    echo "creating $shapfile_dir/$layer"
+    echo "Converting shapefile: $shapfile_name"
     ogr2ogr -f GeoJSON -t_srs EPSG:4674 "$shapfile_dir/$shapfile_name.geojson" "$entry/$shapfile_name.shp"
+    echo "$shapfile_name converted!"
 done
