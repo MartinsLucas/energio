@@ -1,12 +1,38 @@
 version: "3.7"
 services:
 
+  db:
+    image: postgis/postgis:13-3.0
+    volumes:
+    - energio-postgres-data:/var/run/postgresql
+    env_file:
+      - energio.env
+    networks:
+      - energio-network
+    ports:
+      - 5432:5432
+
   app:
-    container_name: tcc-poc
+    tty: true
+    stdin_open: true
+    container_name: energio
     build: .
+    env_file:
+      - energio.env
+    volumes:
+      - .:/energio
+      - energio-bundle:/usr/local/bundle
+    networks:
+      - energio-network
     ports:
       - 3000:3000
-    volumes:
-      - .:/tcc-poc
-    env_file:
-      - tcc-poc.env
+    depends_on:
+      - db
+
+volumes:
+  energio-postgres-data: {}
+  energio-bundle: {}
+
+networks:
+  energio-network:
+    name: energio-network
