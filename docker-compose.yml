@@ -2,6 +2,7 @@ version: "3.7"
 services:
 
   db:
+    container_name: energio-database
     image: postgis/postgis:13-3.0
     volumes:
     - energio-postgres-data:/var/run/postgresql
@@ -13,15 +14,13 @@ services:
       - 5432:5432
 
   app:
-    tty: true
-    stdin_open: true
-    container_name: energio
+    container_name: energio-api
     build: .
     env_file:
       - energio.env
     volumes:
       - .:/energio
-      - energio-bundle:/usr/local/bundle
+      - /usr/local/bundle:/usr/local/bundle
     networks:
       - energio-network
     ports:
@@ -31,7 +30,6 @@ services:
 
 volumes:
   energio-postgres-data: {}
-  energio-bundle: {}
 
 networks:
   energio-network:

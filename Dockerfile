@@ -11,10 +11,10 @@ RUN apt-get update -qq && apt-get install -y build-essential \
                                              nodejs nano less
 
 # Dependencies for rgeo
-RUN apt-get --no-install-recommends -y install libgeos-dev libproj-dev=3.5.1
+RUN apt-get --no-install-recommends -y install libproj-dev libgeos-dev
 
 # Add libgeos symlinks for rgeo gem to be able to find it
-RUN ln -sf /usr/lib/libgeos-3.5.1.so /usr/lib/libgeos.so && ln -sf /usr/lib/libgeos-3.5.1.so /usr/lib/libgeos.so.1
+#RUN ln -sf /usr/lib/libgeos-* /usr/lib/libgeos.so && ln -sf /usr/lib/libgeos-* /usr/lib/libgeos.so.1
 
 COPY . /energio
 
