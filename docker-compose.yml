@@ -1,12 +1,32 @@
-version: "3.7"
+version: '3.5'
+
 services:
+  energiodb:
+    container_name: energio-database
+    image: postgis/postgis:13-3.0
+    volumes:
+      - /var/run/postgresql:/var/run/postgresql
+    env_file:
+      - energio.env
+    networks:
+      - default
+    ports:
+      - 5432:5432
 
   app:
-    container_name: tcc-poc
+    container_name: energio-api
     build: .
+    env_file:
+      - energio.env
+    volumes:
+      - .:/energio
+      - /usr/local/bundle:/usr/local/bundle
+    networks:
+      - default
     ports:
       - 3000:3000
-    volumes:
-      - .:/tcc-poc
-    env_file:
-      - tcc-poc.env
+    depends_on:
+      - energiodb
+
+volumes:
+  energio-postgres-data: {}

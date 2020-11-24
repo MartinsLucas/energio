@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgis
+  encoding: unicode
+  timeout: 5000
+  host: <%= ENV.fetch("POSTGRES_HOST") { 'energio' } %>
+  username: <%= ENV.fetch("POSTGRES_USER") { 'energio' } %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { 'energio' } %>
+  # pool: 5
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: energio_development
+
+test:
+  <<: *default
+  database: energio_test
+
+production:
+  <<: *default
+  database: energio_production

@@ -4,14 +4,22 @@ ENV TZ=UTC
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN   apt-get update -qq && \
-    apt-get install -y build-essential \
-                       libpq-dev \
-                       curl \
-                       git
+# Essential Linux packages
+RUN apt-get update -qq && apt-get install -y build-essential \
+                                             ruby-dev libpq-dev \
+                                             curl git yarn cron \
+                                             nodejs nano less patch \
+                                             zlib1g-dev liblzma-dev
+# Dependencies for rgeo
+RUN apt-get --no-install-recommends -y install libproj-dev libgeos-dev
 
-COPY . /tcc-poc
+# Add libgeos symlinks for rgeo gem to be able to find it
+#RUN ln -sf /usr/lib/libgeos-* /usr/lib/libgeos.so && ln -sf /usr/lib/libgeos-* /usr/lib/libgeos.so.1
 
-WORKDIR /tcc-poc
+RUN gem install bundler
 
-CMD ["sh","scripts/test.sh"]
+COPY . /energio
+
+WORKDIR /energio
+
+CMD ["sh","scripts/start.sh"]
