@@ -2,8 +2,9 @@
 
 bundle check || bundle install
 
-while ! ./scripts/wait-for-it.sh -h $POSTGRES_HOST -p $POSTGRES_PORT; do
+while ! ./scripts/wait-for-it.sh -h $POSTGRES_HOST -p $POSTGRES_PORT -t 5; do
   >&2 echo "Postgres is unavailable - sleeping..."
+  sleep 5;
 done
 >&2 echo "Postgres is up - executing commands..."
 
