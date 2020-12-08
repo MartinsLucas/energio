@@ -1,0 +1,2 @@
+class Substation < ApplicationRecord
+end

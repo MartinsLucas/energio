@@ -1,0 +1,2 @@
+class NotablePoint < ApplicationRecord
+end

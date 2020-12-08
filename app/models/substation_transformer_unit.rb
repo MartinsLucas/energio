@@ -1,0 +1,2 @@
+class SubstationTransformerUnit < ApplicationRecord
+end

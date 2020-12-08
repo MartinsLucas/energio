@@ -1,0 +1,2 @@
+class MediumVoltageSegment < ApplicationRecord
+end

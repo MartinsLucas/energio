@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descr: MyText
+  pn_con: MyString
+  ctmt: MyString
+  uni_tr_s: MyString
+  sub: MyString
+  conj: MyString
+  mun: MyString
+  brr: MyString
+  cep: MyString
+  cnae: MyString
+  tip_cc: MyString
+  fas_con: MyString
+  gru_ten: MyString
+  ten_forn: MyString
+  gru_tar: MyString
+  dat_con: MyString
+  car_inst: 9.99
+  liv: 9.99
+  dic: 9.99
+  fic: 9.99
+  are_loc: MyString
+  geometry: 
+
+two:
+  descr: MyText
+  pn_con: MyString
+  ctmt: MyString
+  uni_tr_s: MyString
+  sub: MyString
+  conj: MyString
+  mun: MyString
+  brr: MyString
+  cep: MyString
+  cnae: MyString
+  tip_cc: MyString
+  fas_con: MyString
+  gru_ten: MyString
+  ten_forn: MyString
+  gru_tar: MyString
+  dat_con: MyString
+  car_inst: 9.99
+  liv: 9.99
+  dic: 9.99
+  fic: 9.99
+  are_loc: MyString
+  geometry: 

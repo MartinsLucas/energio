@@ -20,3 +20,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/src/*
+!/src/bdgd/converted/.keep
+!/src/bdgd/latest/.keep
+!/src/shapefiles/converted/.keep
+!/src/shapefiles/latest/.keep

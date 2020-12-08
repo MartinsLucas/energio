@@ -1,0 +1,2 @@
+class LowVoltageSegment < ApplicationRecord
+end
