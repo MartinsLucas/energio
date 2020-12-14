@@ -1,61 +1,70 @@
+# frozen_string_literal: true
+
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :update, :destroy]
+  before_action :set_group, only: %i[show]
 
   # GET /groups
   def index
-    @groups = Group.all
+    # print '#' * 30
+    # puts 'Encontrando pontos...'
+    # groups = Group.all
+    # points = NotablePoint.where(conj: groups.first.cod_id).first(10)
 
-    collection = []
-    @groups.each do |group|
-      factory = RGeo::GeoJSON::EntityFactory.instance
-      feature = factory.feature group.geometry
-      collection << feature
-    end
+    # count = points.count
+    # print '#' * 30
+    # print count
+    # puts ' pontos encontrados.'
 
-    feature_collection = RGeo::GeoJSON::FeatureCollection.new(collection)
-    hash = RGeo::GeoJSON.encode feature_collection
+    # print '#' * 30
+    # puts 'Iniciando montagem...'
 
-    render json: hash.to_json
+    # collection = []
+    # factory = RGeo::GeoJSON::EntityFactory.instance
+
+    # print count
+    # puts ' pontos restantes...'
+
+    # groups.each do |group|
+    #   properties = {}
+    #   properties[:name] = group.nom if group.nom.present?
+    #   properties[:description] = group.descr if group.descr.present?
+    #   collection << factory.feature(group.geometry, group.cod_id, properties)
+    # end
+
+    # print '#' * 30
+    # puts 'Iniciando conversao...'
+    # feature_collection = RGeo::GeoJSON::FeatureCollection.new(collection)
+    # hash = RGeo::GeoJSON.encode feature_collection
+
+    # print '#' * 30
+    # puts 'Conversao concluida. Renderizando json...'
+    # render json: hash.to_json
+
+    groups = Group.all
+
+    feature = Group.create_rgeo_feature_colection(groups)
+    render json: Group.genetrates_geojson(feature)
   end
 
-  # GET /groups/1
   def show
-    render json: @group
-  end
+    feature = @group&.create_rgeo_feature
 
-  # POST /groups
-  def create
-    @group = Group.new(group_params)
+    puts '#' * 30
+    puts Group.genetrates_geojson(feature)
+    puts '#' * 30
 
-    if @group.save
-      render json: @group, status: :created, location: @group
-    else
-      render json: @group.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /groups/1
-  def update
-    if @group.update(group_params)
-      render json: @group
-    else
-      render json: @group.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /groups/1
-  def destroy
-    @group.destroy
+    render json: Group.genetrates_geojson(feature)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def group_params
-      params.require(:group).permit(:cod_id, :descr, :nom, :geometry)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_group
+    @group = Group.find_by(cod_id: params['id'])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def group_params
+    params.require(:group).permit(:cod_id, :descr, :nom, :geometry)
+  end
 end
