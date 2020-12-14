@@ -16,7 +16,7 @@ RUN apt-get --no-install-recommends -y install libproj-dev libgeos-dev
 # Add libgeos symlinks for rgeo gem to be able to find it
 #RUN ln -sf /usr/lib/libgeos-* /usr/lib/libgeos.so && ln -sf /usr/lib/libgeos-* /usr/lib/libgeos.so.1
 
-RUN gem install bundler
+RUN gem install bundler -v 2.1.4
 
 COPY . /energio
 
