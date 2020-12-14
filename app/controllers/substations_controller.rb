@@ -39,13 +39,14 @@ class SubstationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_substation
-      @substation = Substation.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def substation_params
-      params.require(:substation).permit(:cod_id, :descr, :nom, :geometry)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_substation
+    @substation = Substation.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def substation_params
+    params.require(:substation).permit(:cod_id, :descr, :nom, :geometry)
+  end
 end

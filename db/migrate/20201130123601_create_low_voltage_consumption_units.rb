@@ -24,8 +24,8 @@ class CreateLowVoltageConsumptionUnits < ActiveRecord::Migration[5.2]
       t.string :are_loc
       t.multi_line_string :geometry, srid: 4674
 
-      t.column  :created_at , :timestamp, :null => true
-      t.column  :updated_at , :timestamp, :null => true
+      t.column  :created_at, :timestamp, null: true
+      t.column  :updated_at, :timestamp, null: true
     end
 
     add_index :low_voltage_consumption_units, :geometry, using:  :gist

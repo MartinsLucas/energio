@@ -12,8 +12,8 @@ class CreateMediumVoltageSegments < ActiveRecord::Migration[5.2]
       t.decimal :comp
       t.multi_line_string :geometry, srid: 4674
 
-      t.column  :created_at , :timestamp, :null => true
-      t.column  :updated_at , :timestamp, :null => true
+      t.column  :created_at, :timestamp, null: true
+      t.column  :updated_at, :timestamp, null: true
     end
 
     add_index :medium_voltage_segments, :cod_id,   unique: true

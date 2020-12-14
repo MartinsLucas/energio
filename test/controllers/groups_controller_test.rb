@@ -5,12 +5,12 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     @group = groups(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get groups_url, as: :json
     assert_response :success
   end
 
-  test "should create group" do
+  test 'should create group' do
     assert_difference('Group.count') do
       post groups_url, params: { group: { cod_id: @group.cod_id, descr: @group.descr, geometry: @group.geometry, nom: @group.nom } }, as: :json
     end
@@ -18,17 +18,17 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     assert_response 201
   end
 
-  test "should show group" do
+  test 'should show group' do
     get group_url(@group), as: :json
     assert_response :success
   end
 
-  test "should update group" do
+  test 'should update group' do
     patch group_url(@group), params: { group: { cod_id: @group.cod_id, descr: @group.descr, geometry: @group.geometry, nom: @group.nom } }, as: :json
     assert_response 200
   end
 
-  test "should destroy group" do
+  test 'should destroy group' do
     assert_difference('Group.count', -1) do
       delete group_url(@group), as: :json
     end

@@ -39,13 +39,14 @@ class SubstationTransformerUnitsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_substation_transformer_unit
-      @substation_transformer_unit = SubstationTransformerUnit.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def substation_transformer_unit_params
-      params.require(:substation_transformer_unit).permit(:cod_id, :descr, :barr_1, :barr_2, :barr_3, :sub, :pot_nom, :geometry)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_substation_transformer_unit
+    @substation_transformer_unit = SubstationTransformerUnit.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def substation_transformer_unit_params
+    params.require(:substation_transformer_unit).permit(:cod_id, :descr, :barr_1, :barr_2, :barr_3, :sub, :pot_nom, :geometry)
+  end
 end

@@ -39,13 +39,14 @@ class LowVoltageSegmentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_low_voltage_segment
-      @low_voltage_segment = LowVoltageSegment.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def low_voltage_segment_params
-      params.require(:low_voltage_segment).permit(:cod_id, :descr, :pn_con_1, :pn_con_2, :ctmt, :uni_tr_s, :sub, :conj, :comp, :geometry)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_low_voltage_segment
+    @low_voltage_segment = LowVoltageSegment.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def low_voltage_segment_params
+    params.require(:low_voltage_segment).permit(:cod_id, :descr, :pn_con_1, :pn_con_2, :ctmt, :uni_tr_s, :sub, :conj, :comp, :geometry)
+  end
 end

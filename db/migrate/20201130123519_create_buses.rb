@@ -6,10 +6,10 @@ class CreateBuses < ActiveRecord::Migration[5.2]
       t.string :sub
       t.string :ten_nom
 
-      t.column  :created_at , :timestamp, :null => true
-      t.column  :updated_at , :timestamp, :null => true
+      t.column  :created_at, :timestamp, null: true
+      t.column  :updated_at, :timestamp, null: true
     end
 
-    add_index :buses, :cod_id,		unique:	true
+    add_index :buses, :cod_id,	unique:	true
   end
 end

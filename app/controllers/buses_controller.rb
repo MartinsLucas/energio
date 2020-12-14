@@ -39,13 +39,14 @@ class BusesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bus
-      @bus = Bus.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def bus_params
-      params.require(:bus).permit(:cod_id, :descr, :sub, :ten_nom)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bus
+    @bus = Bus.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def bus_params
+    params.require(:bus).permit(:cod_id, :descr, :sub, :ten_nom)
+  end
 end

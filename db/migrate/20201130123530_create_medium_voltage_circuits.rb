@@ -10,10 +10,10 @@ class CreateMediumVoltageCircuits < ActiveRecord::Migration[5.2]
       t.decimal :ten_ope
       t.string :uni_tr_s
 
-      t.column  :created_at , :timestamp, :null => true
-      t.column  :updated_at , :timestamp, :null => true
+      t.column  :created_at, :timestamp, null: true
+      t.column  :updated_at, :timestamp, null: true
     end
 
-    add_index :medium_voltage_circuits, :cod_id,   unique: true
+    add_index :medium_voltage_circuits, :cod_id, unique: true
   end
 end

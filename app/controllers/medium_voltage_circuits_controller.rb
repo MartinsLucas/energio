@@ -39,13 +39,14 @@ class MediumVoltageCircuitsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_medium_voltage_circuit
-      @medium_voltage_circuit = MediumVoltageCircuit.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def medium_voltage_circuit_params
-      params.require(:medium_voltage_circuit).permit(:cod_id, :descr, :nom, :barr, :sub, :ten_nom, :ten_ope, :uni_tr_s)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_medium_voltage_circuit
+    @medium_voltage_circuit = MediumVoltageCircuit.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def medium_voltage_circuit_params
+    params.require(:medium_voltage_circuit).permit(:cod_id, :descr, :nom, :barr, :sub, :ten_nom, :ten_ope, :uni_tr_s)
+  end
 end

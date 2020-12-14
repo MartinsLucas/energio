@@ -6,11 +6,11 @@ class CreateSubstations < ActiveRecord::Migration[5.2]
       t.string :nom
       t.multi_polygon :geometry, srid: 4674
 
-      t.column  :created_at , :timestamp, :null => true
-      t.column  :updated_at , :timestamp, :null => true
+      t.column  :created_at, :timestamp, null: true
+      t.column  :updated_at, :timestamp, null: true
     end
 
-    add_index :substations, :cod_id,		unique:	true
+    add_index :substations, :cod_id,	unique:	true
     add_index :substations, :geometry,	using:	:gist
   end
 end

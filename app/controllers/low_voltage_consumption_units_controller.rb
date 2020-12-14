@@ -39,13 +39,14 @@ class LowVoltageConsumptionUnitsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_low_voltage_consumption_unit
-      @low_voltage_consumption_unit = LowVoltageConsumptionUnit.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def low_voltage_consumption_unit_params
-      params.require(:low_voltage_consumption_unit).permit(:descr, :pn_con, :ctmt, :uni_tr_s, :sub, :conj, :mun, :brr, :cep, :cnae, :tip_cc, :fas_con, :gru_ten, :ten_forn, :gru_tar, :dat_con, :car_inst, :liv, :dic, :fic, :are_loc, :geometry)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_low_voltage_consumption_unit
+    @low_voltage_consumption_unit = LowVoltageConsumptionUnit.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def low_voltage_consumption_unit_params
+    params.require(:low_voltage_consumption_unit).permit(:descr, :pn_con, :ctmt, :uni_tr_s, :sub, :conj, :mun, :brr, :cep, :cnae, :tip_cc, :fas_con, :gru_ten, :ten_forn, :gru_tar, :dat_con, :car_inst, :liv, :dic, :fic, :are_loc, :geometry)
+  end
 end

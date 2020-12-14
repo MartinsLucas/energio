@@ -39,13 +39,14 @@ class NotablePointsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_notable_point
-      @notable_point = NotablePoint.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def notable_point_params
-      params.require(:notable_point).permit(:cod_id, :descr, :conj, :geometry)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_notable_point
+    @notable_point = NotablePoint.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def notable_point_params
+    params.require(:notable_point).permit(:cod_id, :descr, :conj, :geometry)
+  end
 end
