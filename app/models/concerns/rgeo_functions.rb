@@ -17,8 +17,17 @@ module RgeoFunctions
 
     def build_properties
       properties = {}
-      properties[:name] = nom.present? ? nom : "#{self.class.name} ##{cod_id}"
-      properties[:description] = descr.present? ? descr : self.class.name.to_s
+      properties[:name] = if defined?(nom) && nom.present?
+        nom
+      else
+        "#{self.class.name} ##{cod_id}"
+      end
+
+      properties[:description] = if defined?(descr) && descr.present?
+        descr
+      else
+        self.class.name.to_s
+      end
 
       properties
     end
