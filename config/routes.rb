@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :static_pages
 
   resources :groups, only: [:index, :show] do
+    resources :entities, only: [:index, :show]
   end
 end
