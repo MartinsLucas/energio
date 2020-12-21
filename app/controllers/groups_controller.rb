@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
 
   # GET /groups
   def index
-    groups = MediumVoltageSegment.where(conj: 16020)
+    groups = Group.all
 
     feature = Group.create_rgeo_feature_colection(groups)
     render json: Group.genetrates_geojson(feature).to_json
