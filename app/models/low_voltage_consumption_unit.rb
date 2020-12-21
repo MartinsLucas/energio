@@ -1,0 +1,2 @@
+class LowVoltageConsumptionUnit < ApplicationRecord
+end

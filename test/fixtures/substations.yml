@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cod_id: MyString
+  descr: MyText
+  nom: MyString
+  geometry: 
+
+two:
+  cod_id: MyString
+  descr: MyText
+  nom: MyString
+  geometry: 

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cod_id: MyString
+  descr: MyText
+  pn_con_1: MyString
+  pn_con_2: MyString
+  ctmt: MyString
+  uni_tr_s: MyString
+  sub: MyString
+  conj: MyString
+  comp: 9.99
+  geometry: 
+
+two:
+  cod_id: MyString
+  descr: MyText
+  pn_con_1: MyString
+  pn_con_2: MyString
+  ctmt: MyString
+  uni_tr_s: MyString
+  sub: MyString
+  conj: MyString
+  comp: 9.99
+  geometry: 

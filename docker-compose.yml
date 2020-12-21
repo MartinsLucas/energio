@@ -9,7 +9,7 @@ services:
     env_file:
       - energio.env
     networks:
-      - default
+      - energio-network
     ports:
       - 5432:5432
 
@@ -22,7 +22,7 @@ services:
       - .:/energio
       - /usr/local/bundle:/usr/local/bundle
     networks:
-      - default
+      - energio-network
     ports:
       - 3000:3000
     depends_on:
@@ -30,3 +30,7 @@ services:
 
 volumes:
   energio-postgres-data: {}
+
+networks:
+  energio-network:
+    name: energio-network

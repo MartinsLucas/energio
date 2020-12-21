@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cod_id: MyString
+  descr: MyText
+  barr_1: MyString
+  barr_2: MyString
+  barr_3: MyString
+  sub: MyString
+  pot_nom: 9.99
+  geometry: 
+
+two:
+  cod_id: MyString
+  descr: MyText
+  barr_1: MyString
+  barr_2: MyString
+  barr_3: MyString
+  sub: MyString
+  pot_nom: 9.99
+  geometry: 
