@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_124210) do
     t.string "cod_id"
     t.text "descr"
     t.string "nom"
-    t.geometry "geometry", limit: {:srid=>4674, :type=>"multi_polygon"}
+    t.geometry "geometry", limit: {:srid=>3857, :type=>"multi_polygon"}
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["cod_id"], name: "index_groups_on_cod_id", unique: true
